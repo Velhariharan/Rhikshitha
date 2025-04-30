@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Rhikshitha!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+            background-color: black;
+            overflow: hidden;
+        }
+
+        .bg {
+            background-image: url('https://wallpaperaccess.com/full/8999734.jpg');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 2;
+        }
+
+        .gift-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6.5em;
+            cursor: pointer;
+            z-index: 3;
+            transition: text-shadow 0.3s ease-in-out;
+            animation: shake 1.5s infinite;
+            color: white;
+        }
+
+        .gift-box:hover {
+            text-shadow: 0px 0px 15px rgba(255, 70, 100, 0.8);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            25% { transform: translate(-50%, -50%) rotate(-5deg); }
+            50% { transform: translate(-50%, -50%) rotate(5deg); }
+            75% { transform: translate(-50%, -50%) rotate(-5deg); }
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 80%;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 0px 15px rgba(233, 30, 99, 0.5);
+            opacity: 0;
+            border-radius: 15px;
+            transition: all 0.4s ease-in-out;
+            z-index: 10;
+        }
+
+        .popup.show {
+            display: block;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .popup .message {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .click-again, .replay {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 18px;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .click-again:hover, .replay:hover {
+            background: linear-gradient(to right, #ff5e81, #ff6fa2);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 500px) {
+            .popup {
+                width: 90%;
+                font-size: 0.95em;
+            }
+
+            .gift-box {
+                font-size: 4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="gift-box" onclick="openGift()">🎁</div>
+
+    <div id="popup1" class="popup">
+        <div class="message">
+            "Happy Birthday, Rhikshitha! 🎂✨<br>
+            Wishing you a year filled with growth, success, and moments that truly matter. Your dedication and discipline set you apart, and it's inspiring to see you push boundaries every day. May this year bring you even closer to your aspirations. 🚀"
+        </div>
+        <button class="click-again" onclick="showPopup('popup2')">More surprises inside!</button>
+    </div>
+
+    <div id="popup2" class="popup">
+        <div class="message">
+           "Another year, another milestone. Keep shaping your path with the same confidence, precision, and relentless drive. Your journey is yours to own, and there’s no doubt you'll make it extraordinary. Wishing you strength, fulfillment, and all that aligns with your vision. Cheers to another remarkable year ahead! ✨"
+        </div>
+        <button class="click-again" onclick="showPopup('popup3')">One last thing… 🎂</button>
+    </div>
+
+    <div id="popup3" class="popup">
+        <div class="message">
+            🎶 "Happy Birthday to You" 🎶 <br><br>
+            Just a note to say — you’re the kind of rare that doesn’t go unnoticed.
+        </div>
+        <button class="replay" onclick="replayExperience()">Replay the Magic ✨</button>
+    </div>
+
+    <script>
+        function openGift() {
+            showPopup('popup1');
+        }
+
+        function showPopup(popupId) {
+            document.querySelectorAll('.popup').forEach(popup => popup.classList.remove('show'));
+            document.getElementById(popupId).classList.add('show');
+        }
+
+        function replayExperience() {
+            document.querySelectorAll('.popup').forEach(popup => popup.classList.remove('show'));
+        }
+    </script>
+</body>
+</html>
